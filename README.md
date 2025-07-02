@@ -6,6 +6,8 @@ Una forma **sencilla**, **ligera** y **reactiva** de crear Web Components sin de
 ![Ligero](https://img.shields.io/badge/size-pequeño-blue)
 ![Reactividad](https://img.shields.io/badge/reactividad-incluida-green)
 
+
+🚀 mira live demo en : https://nithelelias.github.io/simple-web-component/
 ---
 
 ## 💡 ¿Por qué nació esto?
