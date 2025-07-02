@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Web Components</title>
+    <style>
+      body {
+        background-color: #111;
+        color: #f1f1f1;
+      }
+      h1 {
+        width: 100%;
+        text-align: center;
+      }
+      main {
+        width: 1440px;
+        max-width: 100vw;
+        margin: 0 auto;
+      }
+      button {
+        cursor: pointer;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Simple Web Components</h1>
+
+      <comp-padre>Hola mundo</comp-padre>
+      <hr />
+      <mi-contador></mi-contador>
+      <hr />
+      <comp-colorido></comp-colorido>
+    </main>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
