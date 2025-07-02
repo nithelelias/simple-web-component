@@ -4,30 +4,47 @@ import {
   getState,
   createEvent,
   addStyle,
+  getData,
 } from "./simple-web-components.js";
 
 function compPadre() {
+  const state = getState(this, { version: 0 });
+
+  setTimeout(() => {
+    state.version += 1;
+  }, 1000);
+
   return `
         <div>
-          <h2>Soy el padre</h2>
-          <p>${this.children}</p>
-          <comp-hijo apellido="elias">Nithel</comp-hijo>
-          
+          <h2>Soy el padre</h2> 
+          <p>${this.children} </p>
+          <p>VERSION PADRE: ${state.version} </p>
+          <comp-hijo apellido="elias" versionpadre="${state.version}">Nithel</comp-hijo> 
         </div>
       `;
 }
 function compHijo(props) {
-  const state = getState(this, { version: 0 });
+  const state = getState(this, { version: 0 }); 
+  const data = getData(this, { trigger: true }); // DATA SOLIDA AQUI
   const nombre = this.children;
-  setTimeout(() => {
-    state.version += 1;
-  }, 5000);
+  const segundos = 2;
+  if (data.trigger) {
+    data.trigger = false;
+    setTimeout(() => {
+      state.version += 1;
+      data.trigger = true;
+    }, segundos * 1000);
+  }
 
   return `
         <div>
-          <h3>Soy el HIJO ${nombre} ${props.apellido}</h3>  
-          <mi-contador></mi-contador>
-          <b>Version: ${state.version}</b> 
+          <h3>Soy el HIJO ${nombre} ${props.apellido}</h3>   
+          <p>Me actualizo cada ${segundos} segundos</p>
+          <ul>
+            <li>Version PADRE: ${props.versionpadre}</li>
+            <li>Version HIJO: ${state.version}</li> 
+          </ul>
+          
         </div>
       `;
 }
