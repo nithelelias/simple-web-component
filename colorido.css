@@ -15,10 +15,16 @@
     red
   );
   background-size: 800% 800%;
-
   animation: moverArcoiris 10s linear infinite;
-}
 
+  & p {
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+    font-weight: bolder;
+    mix-blend-mode: difference;
+    filter: invert(1);
+  }
+}
 
 @keyframes moverArcoiris {
   0% {

@@ -17,22 +17,32 @@
         width: 1440px;
         max-width: 100vw;
         margin: 0 auto;
-      }
-      button {
-        cursor: pointer;
-        background-color: red;
+        padding-bottom: 100px;
       }
     </style>
   </head>
   <body>
     <main>
       <h1>Simple Web Components</h1>
+      <example-section num="1">
+        <comp-padre>Hola mundo</comp-padre>
+      </example-section>
 
-      <comp-padre>Hola mundo</comp-padre>
-      <hr />
-      <mi-contador></mi-contador>
-      <hr />
-      <comp-colorido></comp-colorido>
+      <example-section num="2">
+        <mi-contador></mi-contador>
+      </example-section>
+
+      <example-section num="3">
+        <comp-colorido></comp-colorido>
+      </example-section>
+
+      <example-section num="4">
+        <mi-formulario></mi-formulario>
+      </example-section>
+
+      <example-section num="5 componente asyncrono">
+        <mi-js-loader></mi-js-loader>
+      </example-section>
     </main>
 
     <script type="module" src="main.js"></script>

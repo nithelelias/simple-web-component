@@ -84,6 +84,7 @@ class SWCCore extends HTMLElement {
         }
         if (!this.__eventlisteners[item.property].includes(element)) {
           this.__eventlisteners[item.property].push(element);
+
           element.addEventListener(item.property, (evt) => {
             const callbackFunction = this.__events[item.value];
             callbackFunction && callbackFunction(evt);

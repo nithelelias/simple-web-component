@@ -45,10 +45,57 @@ function miContador() {
 }
 
 function compColorido() {
-  addStyle(this, ["./colorido.css", "./utils.css"]); 
+  addStyle(this, ["./colorido.css", "./utils.css"]);
   return `<div class="arcoiris flex">
-    componente colorido aqui
+    <p>componente colorido aqui</p>
   </div>`;
 }
 
-register([compPadre, compHijo, miContador, compColorido]);
+function miFormulario() {
+  const state = getState(this, { nombre: "" });
+  createEvent(this, "inputNombre", (evt) => {
+    state.nombre = evt.target.value;
+  });
+  return `<form>
+      <p>Tu nombre es: ${state.nombre}</p>
+      <label>Nombre: 
+        <input type='text' name='nombre' input=#inputNombre /> 
+      </label>
+  </form>`;
+}
+
+function miJsLoader() {
+  const state = getState(this, { active: true });
+  createEvent(this, "onclick", () => {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = "./compAsync.js";
+    document.body.appendChild(script);
+    state.active = false;
+  });
+  if (!state.active) {
+    return `<p>Les presento:</p><comp-async></comp-async>`;
+  }
+  return `<button click=#onclick>Carga mi componente hijo</button>  
+  `;
+}
+
+function exampleSection(props) {
+  addStyle(this, "./utils.css");
+  return `<section class="example-section">
+        <h2>Ejemplo #${props.num}</h2>
+        <article>
+          ${this.children}
+        </article>
+      </section>`;
+}
+
+register([
+  compPadre,
+  compHijo,
+  miContador,
+  compColorido,
+  miFormulario,
+  exampleSection,
+  miJsLoader,
+]);

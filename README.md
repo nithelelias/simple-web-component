@@ -1,4 +1,4 @@
-# 🔧 Simple Web Components 
+# 🔧 Simple Web Components
 
 Una forma **sencilla**, **ligera** y **reactiva** de crear Web Components sin dependencias ni decoradores raros.
 
@@ -52,11 +52,12 @@ function miContador() {
 register(miContador);
 ```
 
-```HTML 
+```HTML
 <!-- index.html -->
 
 <mi-contador></mi-contador>
 ```
+
 En este ejemplo ya se aprecia lo rapido que seria crear un componente al declarar el componente en la funcion este tomaria el nombre **mi-contador**
 
 ---
@@ -101,7 +102,6 @@ register([compPadre, compHijo]);
 
 En este segundo ejemplo podemos ver como es posible pasar parametros tanto por el valor interno del componente como por parametros
 
-
 ## ✨ Ejemplo rápido #3
 
 Agregandole estilos encapsulados, facilito asi
@@ -111,17 +111,53 @@ import { register, addStyle } from "simple-web-components";
 function compColorido() {
   addStyle(this, ["./colorido.css", "./utils.css"]);
   return `<div class="arcoiris flex">
-    componente colorido aqui
+      <p>componente colorido aqui</p>
   </div>`;
 }
 register(compColorido);
 ```
+
 ```HTML
 <!--index.html -->
 <comp-colorido></comp-colorido>
 ```
 
 Aqui agregaremos unos estilos directamente sobre el componente
+
+## ✨ Ejemplo rápido #4
+
+Formularios son "rili eze"
+
+```js
+import { register, getState, createEvent } from "simple-web-components";
+
+function miFormulario() {
+  const state = getState(this, { nombre: "" });
+  createEvent(this, "inputNombre", (evt) => {
+    state.nombre = evt.target.value;
+  });
+  return `<form>
+      <p>Tu nombre es: ${state.nombre}</p>
+      <label>Nombre: 
+        <input type='text' name='nombre' input=#inputNombre /> 
+      </label>
+  </form>`;
+}
+
+register(miFormulario);
+```
+
+```HTML
+<!--index.html -->
+<mi-formulario></mi-formulario>
+```
+
+Aquí puedes notar la mecánica para usar eventos: simplemente utiliza el **nombre del evento sin el prefijo `on`**.  
+Por ejemplo:
+
+- en lugar de `oninput`, usa **`input`**
+- en lugar de `onclick`, usa **`click`**
+- en lugar de `onchange`, usa **`change`**
 
 ## 🧪 ¿Quién debería usar esto?
 
