@@ -1,4 +1,4 @@
-# 🔧 Simple Web Components
+# 🔧 Simple Web Components 
 
 Una forma **sencilla**, **ligera** y **reactiva** de crear Web Components sin dependencias ni decoradores raros.
 
@@ -33,6 +33,8 @@ Así que, como toda persona cuerda en esta situación, hice lo más razonable:
 
 ## ✨ Ejemplo rápido #1
 
+Aqui veremos un ejemplo de lo rapido que es crear componentes simples ya con reactividad creada.
+
 ```js
 import { register, getData, createEvent } from "simple-web-components";
 
@@ -50,11 +52,18 @@ function miContador() {
 register(miContador);
 ```
 
+```HTML 
+<!-- index.html -->
+
+<mi-contador></mi-contador>
+```
+En este ejemplo ya se aprecia lo rapido que seria crear un componente al declarar el componente en la funcion este tomaria el nombre **mi-contador**
+
 ---
 
 ## ✨ Ejemplo rápido #2
 
-anidando componentes y solo actualizando lo que cambie
+Anidando componentes y solo actualizando lo que cambie
 
 ```js
 import { register } from "simple-web-components";
@@ -86,8 +95,12 @@ register([compPadre, compHijo]);
 ```
 
 ```HTML
+<!--index.html -->
 <comp-padre>Hola mundo</comp-padre>
 ```
+
+En este segundo ejemplo podemos ver como es posible pasar parametros tanto por el valor interno del componente como por parametros
+
 
 ## ✨ Ejemplo rápido #3
 
@@ -103,6 +116,12 @@ function compColorido() {
 }
 register(compColorido);
 ```
+```HTML
+<!--index.html -->
+<comp-colorido></comp-colorido>
+```
+
+Aqui agregaremos unos estilos directamente sobre el componente
 
 ## 🧪 ¿Quién debería usar esto?
 
